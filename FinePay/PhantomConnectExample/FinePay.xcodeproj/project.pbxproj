@@ -12,6 +12,10 @@
 		50B61A832878796C0030CC83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50B61A822878796C0030CC83 /* Assets.xcassets */; };
 		50B61A862878796C0030CC83 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50B61A852878796C0030CC83 /* Preview Assets.xcassets */; };
 		50B61A9428787AB60030CC83 /* PhantomConnect in Frameworks */ = {isa = PBXBuildFile; productRef = 50B61A9328787AB60030CC83 /* PhantomConnect */; };
+		EED7636E2D9D523F00E03109 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED7636D2D9D523D00E03109 /* HomeView.swift */; };
+		EED763702D9D526500E03109 /* PeerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED7636F2D9D525E00E03109 /* PeerView.swift */; };
+		EED763722D9D527D00E03109 /* MultipeerSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED763712D9D527400E03109 /* MultipeerSession.swift */; };
+		EED763762D9D52B000E03109 /* Peer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED763752D9D52AD00E03109 /* Peer.swift */; };
 		F1A4D9912D9CCF4E00379B28 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A4D9902D9CCF4700379B28 /* NetworkManager.swift */; };
 		F1A4D9932D9CD37D00379B28 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A4D9922D9CD37600379B28 /* HttpMethod.swift */; };
 		F1A4D9952D9CD3F100379B28 /* BlockHashModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A4D9942D9CD3E800379B28 /* BlockHashModel.swift */; };
@@ -27,6 +31,10 @@
 		50B61A852878796C0030CC83 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		50B61A8F28787A130030CC83 /* phantom-connect */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "phantom-connect"; path = ..; sourceTree = "<group>"; };
 		50B61A9528787C890030CC83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EED7636D2D9D523D00E03109 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		EED7636F2D9D525E00E03109 /* PeerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerView.swift; sourceTree = "<group>"; };
+		EED763712D9D527400E03109 /* MultipeerSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerSession.swift; sourceTree = "<group>"; };
+		EED763752D9D52AD00E03109 /* Peer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peer.swift; sourceTree = "<group>"; };
 		F1A4D9902D9CCF4700379B28 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		F1A4D9922D9CD37600379B28 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		F1A4D9942D9CD3E800379B28 /* BlockHashModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockHashModel.swift; sourceTree = "<group>"; };
@@ -67,6 +75,7 @@
 		50B61A7D2878796B0030CC83 /* PhantomConnectExample */ = {
 			isa = PBXGroup;
 			children = (
+				EED763692D9D521E00E03109 /* Home */,
 				F1C02EAD2D9D4D1B00F1AFFE /* Common */,
 				F1C02EAC2D9D4D0F00F1AFFE /* SendingSOL */,
 				F1C63A8F2D9D4CC500EFDAC1 /* Extension */,
@@ -102,6 +111,32 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EED763692D9D521E00E03109 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				EED7636B2D9D522B00E03109 /* View */,
+				EED7636A2D9D522700E03109 /* Model */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		EED7636A2D9D522700E03109 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EED763752D9D52AD00E03109 /* Peer.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EED7636B2D9D522B00E03109 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EED7636F2D9D525E00E03109 /* PeerView.swift */,
+				EED7636D2D9D523D00E03109 /* HomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F1C02EAC2D9D4D0F00F1AFFE /* SendingSOL */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +149,7 @@
 		F1C02EAD2D9D4D1B00F1AFFE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				EED763712D9D527400E03109 /* MultipeerSession.swift */,
 				F1A4D9922D9CD37600379B28 /* HttpMethod.swift */,
 				F1A4D9902D9CCF4700379B28 /* NetworkManager.swift */,
 			);
@@ -220,9 +256,13 @@
 			files = (
 				F1A4D9932D9CD37D00379B28 /* HttpMethod.swift in Sources */,
 				F1A4D9A12D9CDC2900379B28 /* SendSOLView.swift in Sources */,
+				EED763722D9D527D00E03109 /* MultipeerSession.swift in Sources */,
+				EED763762D9D52B000E03109 /* Peer.swift in Sources */,
 				F1A4D9912D9CCF4E00379B28 /* NetworkManager.swift in Sources */,
 				F1A4D9A32D9CF99E00379B28 /* Color+Ex.swift in Sources */,
 				50B61A812878796B0030CC83 /* ContentView.swift in Sources */,
+				EED7636E2D9D523F00E03109 /* HomeView.swift in Sources */,
+				EED763702D9D526500E03109 /* PeerView.swift in Sources */,
 				F1A4D9952D9CD3F100379B28 /* BlockHashModel.swift in Sources */,
 				50B61A7F2878796B0030CC83 /* FinePay.swift in Sources */,
 			);
