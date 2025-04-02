@@ -67,11 +67,9 @@
 		50B61A7D2878796B0030CC83 /* PhantomConnectExample */ = {
 			isa = PBXGroup;
 			children = (
-				F1A4D9A22D9CF99B00379B28 /* Color+Ex.swift */,
-				F1A4D9A02D9CDC1B00379B28 /* SendSOLView.swift */,
-				F1A4D9942D9CD3E800379B28 /* BlockHashModel.swift */,
-				F1A4D9922D9CD37600379B28 /* HttpMethod.swift */,
-				F1A4D9902D9CCF4700379B28 /* NetworkManager.swift */,
+				F1C02EAD2D9D4D1B00F1AFFE /* Common */,
+				F1C02EAC2D9D4D0F00F1AFFE /* SendingSOL */,
+				F1C63A8F2D9D4CC500EFDAC1 /* Extension */,
 				50B61A9528787C890030CC83 /* Info.plist */,
 				50B61A7E2878796B0030CC83 /* FinePay.swift */,
 				50B61A802878796B0030CC83 /* ContentView.swift */,
@@ -102,6 +100,48 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F1C02EAC2D9D4D0F00F1AFFE /* SendingSOL */ = {
+			isa = PBXGroup;
+			children = (
+				F1C02EAE2D9D4D3200F1AFFE /* Model */,
+				F1C02EAF2D9D4D4700F1AFFE /* View */,
+			);
+			path = SendingSOL;
+			sourceTree = "<group>";
+		};
+		F1C02EAD2D9D4D1B00F1AFFE /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F1A4D9922D9CD37600379B28 /* HttpMethod.swift */,
+				F1A4D9902D9CCF4700379B28 /* NetworkManager.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		F1C02EAE2D9D4D3200F1AFFE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F1A4D9942D9CD3E800379B28 /* BlockHashModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F1C02EAF2D9D4D4700F1AFFE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F1A4D9A02D9CDC1B00379B28 /* SendSOLView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F1C63A8F2D9D4CC500EFDAC1 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F1A4D9A22D9CF99B00379B28 /* Color+Ex.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
