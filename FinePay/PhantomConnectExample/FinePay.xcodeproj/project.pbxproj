@@ -18,6 +18,7 @@
 		F1A4D9A12D9CDC2900379B28 /* SendSOLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A4D9A02D9CDC1B00379B28 /* SendSOLView.swift */; };
 		F1A4D9A32D9CF99E00379B28 /* Color+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A4D9A22D9CF99B00379B28 /* Color+Ex.swift */; };
 		F1C02EB12D9D950200F1AFFE /* SendingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C02EB02D9D94FD00F1AFFE /* SendingView.swift */; };
+		F1C02EB32D9D998E00F1AFFE /* SendingResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C02EB22D9D998A00F1AFFE /* SendingResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		F1A4D9A02D9CDC1B00379B28 /* SendSOLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendSOLView.swift; sourceTree = "<group>"; };
 		F1A4D9A22D9CF99B00379B28 /* Color+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ex.swift"; sourceTree = "<group>"; };
 		F1C02EB02D9D94FD00F1AFFE /* SendingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendingView.swift; sourceTree = "<group>"; };
+		F1C02EB22D9D998A00F1AFFE /* SendingResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendingResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 		F1C02EAF2D9D4D4700F1AFFE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F1C02EB22D9D998A00F1AFFE /* SendingResultView.swift */,
 				F1C02EB02D9D94FD00F1AFFE /* SendingView.swift */,
 				F1A4D9A02D9CDC1B00379B28 /* SendSOLView.swift */,
 			);
@@ -221,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1C02EB32D9D998E00F1AFFE /* SendingResultView.swift in Sources */,
 				F1A4D9932D9CD37D00379B28 /* HttpMethod.swift in Sources */,
 				F1A4D9A12D9CDC2900379B28 /* SendSOLView.swift in Sources */,
 				F1A4D9912D9CCF4E00379B28 /* NetworkManager.swift in Sources */,
