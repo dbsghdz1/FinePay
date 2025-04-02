@@ -50,9 +50,10 @@ class MultipeerSession: NSObject, ObservableObject {
     
     // MARK: Custom Method
     
-    func invite(_ peer: MCPeerID) {
-        log.info("📩 초대 전송: \(peer.displayName)")
-        serviceBrowser.invitePeer(peer, to: session, withContext: nil, timeout: 10)
+    func invite(_ peer: Peer) {
+        let mcPeerID = MCPeerID(displayName: peer.id)
+        log.info("📩 초대 전송: \(mcPeerID.displayName)")
+        serviceBrowser.invitePeer(mcPeerID, to: session, withContext: nil, timeout: 10)
     }
     
     func send() {
@@ -133,4 +134,8 @@ extension MultipeerSession: MCSessionDelegate {
     public func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
         log.error("Receiving resources is not supported")
     }
+}
+
+extension MCPeerID: @retroactive Identifiable {
+    public var id: String { displayName }
 }
