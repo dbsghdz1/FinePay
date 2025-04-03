@@ -106,6 +106,10 @@ extension MultipeerSession: MCNearbyServiceBrowserDelegate {
 
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
         log.info("ServiceBrowser lost peer: \(peerID)")
+        
+        DispatchQueue.main.async {
+            self.foundPeers.removeAll(where: { $0.id == peerID.displayName })
+        }
     }
 }
 
