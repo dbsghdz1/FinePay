@@ -10,7 +10,7 @@ import SwiftUI
 struct PeerView: View {
     let peers: [Peer]
     let inviteAction: (Peer) -> Void
-    let centerEmoji = "😎"
+    let centerEmoji = "😊"
     let centerLabel = "나"
     let emojis = ["👾", "🤖", "👻", "🧠", "👽", "🐸", "🦄", "🐙"]
     

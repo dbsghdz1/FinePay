@@ -9,18 +9,24 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var multipeerSession = MultipeerSession()
+    @State private var isSheetPresented = false
 
     var body: some View {
-        VStack {
+        ZStack(alignment: .bottom) {
             PeerView(
                 peers: multipeerSession.foundPeers,
                 inviteAction: { peer in
                     multipeerSession.invite(peer)
                 }
             )
-            .frame(height: 400)
+            .frame(maxHeight: .infinity)
+            .padding()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    
+            BottomWalletView()
+                .padding(.bottom, 20)
         }
-        .padding()
+        .ignoresSafeArea(.keyboard, edges: .bottom)
         .alert(item: $multipeerSession.connectedPeers) { peer in
             Alert(
                 title: Text("초대 수신"),
