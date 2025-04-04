@@ -19,6 +19,8 @@
 		F1A4D9A32D9CF99E00379B28 /* Color+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A4D9A22D9CF99B00379B28 /* Color+Ex.swift */; };
 		F1C02EB12D9D950200F1AFFE /* SendingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C02EB02D9D94FD00F1AFFE /* SendingView.swift */; };
 		F1C02EB32D9D998E00F1AFFE /* SendingResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C02EB22D9D998A00F1AFFE /* SendingResultView.swift */; };
+		F1C02EB52D9E527100F1AFFE /* Double+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C02EB42D9E526F00F1AFFE /* Double+Ex.swift */; };
+		F1C02EB92D9EAE2E00F1AFFE /* View+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C02EB82D9EAE2800F1AFFE /* View+Ex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		F1A4D9A22D9CF99B00379B28 /* Color+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ex.swift"; sourceTree = "<group>"; };
 		F1C02EB02D9D94FD00F1AFFE /* SendingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendingView.swift; sourceTree = "<group>"; };
 		F1C02EB22D9D998A00F1AFFE /* SendingResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendingResultView.swift; sourceTree = "<group>"; };
+		F1C02EB42D9E526F00F1AFFE /* Double+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Ex.swift"; sourceTree = "<group>"; };
+		F1C02EB82D9EAE2800F1AFFE /* View+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ex.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,8 @@
 		F1C63A8F2D9D4CC500EFDAC1 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				F1C02EB82D9EAE2800F1AFFE /* View+Ex.swift */,
+				F1C02EB42D9E526F00F1AFFE /* Double+Ex.swift */,
 				F1A4D9A22D9CF99B00379B28 /* Color+Ex.swift */,
 			);
 			path = Extension;
@@ -225,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1C02EB32D9D998E00F1AFFE /* SendingResultView.swift in Sources */,
+				F1C02EB92D9EAE2E00F1AFFE /* View+Ex.swift in Sources */,
 				F1A4D9932D9CD37D00379B28 /* HttpMethod.swift in Sources */,
 				F1A4D9A12D9CDC2900379B28 /* SendSOLView.swift in Sources */,
 				F1A4D9912D9CCF4E00379B28 /* NetworkManager.swift in Sources */,
@@ -232,6 +239,7 @@
 				50B61A812878796B0030CC83 /* ContentView.swift in Sources */,
 				F1A4D9952D9CD3F100379B28 /* BlockHashModel.swift in Sources */,
 				50B61A7F2878796B0030CC83 /* FinePay.swift in Sources */,
+				F1C02EB52D9E527100F1AFFE /* Double+Ex.swift in Sources */,
 				F1C02EB12D9D950200F1AFFE /* SendingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
