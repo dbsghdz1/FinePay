@@ -48,7 +48,7 @@ class MultipeerSession: NSObject, ObservableObject {
     
     // MARK: custom Method
     func invite(_ peer: Peer) {
-        let userPeer = MCPeerID(displayName: peer.id)
+        guard let userPeer = peer.peerID else { return }
         log.info("📩 초대 전송: \(userPeer.displayName)")
         serviceBrowser.invitePeer(userPeer, to: session, withContext: nil, timeout: 10)
     }
