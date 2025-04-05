@@ -19,6 +19,7 @@ class MultipeerSession: NSObject, ObservableObject {
     @Published var foundPeers: [Peer] = []
     @Published var connectedPeers: [MCPeerID] = [] // ✅ 배열로 수정
     @Published var sendingFromPeer: Peer?
+    @Published var giverAddress: String?
     
     private var pendingInvitationHandler: ((Bool, MCSession?) -> Void)?
     
@@ -57,14 +58,26 @@ class MultipeerSession: NSObject, ObservableObject {
         log.info("✉️ send() 호출됨, 현재 연결 수: \(self.session.connectedPeers.count)")
     }
 
-    func respondToInvite(accept: Bool) {
+    func respondToInvite(accept: Bool, address: String) {
         if let handler = pendingInvitationHandler {
             log.info("🟢 초대 \(accept ? "수락" : "거절")")
             handler(accept, session)
             pendingInvitationHandler = nil
+            
+            if accept {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    let data = Data(address.utf8)
+                    do {
+                        try self.session.send(data, toPeers: self.session.connectedPeers, with: .reliable)
+                        self.log.info("📤 주소 전송 완료: \(address)")
+                    } catch {
+                        self.log.error("❌ 주소 전송 실패: \(error.localizedDescription)")
+                    }
+                }
+            }
         }
     }
-
+    
     private func peer(for peerID: MCPeerID) -> Peer {
         return Peer(id: peerID.displayName, displayName: peerID.displayName, wallet: "", peerID: peerID)
     }
@@ -140,6 +153,15 @@ extension MultipeerSession: MCSessionDelegate {
 
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         log.info("📦 데이터 수신: \(data.count) bytes from \(peerID.displayName)")
+        
+        guard let address = String(data: data, encoding: .utf8) else {
+            log.error("❌ 받은 데이터 디코딩 실패")
+            return
+        }
+        
+        DispatchQueue.main.async {
+            self.giverAddress = address
+        }
     }
 
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {}
