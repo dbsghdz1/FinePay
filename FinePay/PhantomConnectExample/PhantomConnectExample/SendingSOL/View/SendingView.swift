@@ -101,6 +101,7 @@ extension SendingView: View {
               .frame(width: 361, height: 55)
               .foregroundStyle(Color.mainColor)
           )
+          .frame(maxWidth: .infinity, maxHeight: .infinity)
       }
       .frame(width: 361, height: 55)
       .padding(.horizontal)

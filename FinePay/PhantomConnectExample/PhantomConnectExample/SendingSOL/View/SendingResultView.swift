@@ -47,6 +47,7 @@ extension SendingResultView: View {
                             .frame(width: 361, height: 55)
                             .foregroundStyle(Color.mainColor)
                       )
+                      .frame(maxWidth: .infinity)
               }
               .padding(.horizontal)
               .padding(.bottom, 38)
