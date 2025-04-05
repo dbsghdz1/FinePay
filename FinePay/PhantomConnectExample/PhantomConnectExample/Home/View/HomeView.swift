@@ -9,39 +9,56 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var multipeerSession = MultipeerSession()
+    @State private var selectedPeer: Peer? = nil
     @State private var isSheetPresented = false
 
     var body: some View {
-        ZStack(alignment: .bottom) {
-            PeerView(
-                peers: multipeerSession.foundPeers,
-                inviteAction: { peer in
-                    multipeerSession.invite(peer)
+        ZStack(
+            alignment: .bottom
+        ) {
+            VStack {
+                PeerView(
+                    peers: multipeerSession.foundPeers,
+                    inviteAction: { peer in
+                        withAnimation {
+                            selectedPeer = peer
+                        }
+                    }
+                )
+                .padding()
+                
+                BottomWalletView()
+                    .padding(.bottom, 40)
+            }
+            
+            if selectedPeer != nil {
+                Color.black.opacity(0.4)
+                    .ignoresSafeArea()
+                    .transition(.opacity)
+                    .onTapGesture {
+                        withAnimation { selectedPeer = nil }
+                    }
+            }
+            
+            if let peer = selectedPeer {
+                SendView(peer: peer) {
+                    multipeerSession
+                        .invite(peer)
+                    withAnimation {
+                        selectedPeer = nil
+                    }
                 }
-            )
-            .frame(maxHeight: .infinity)
-            .padding()
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    
-            BottomWalletView()
-                .padding(.bottom, 20)
+                .transition(.move(edge: .bottom))
+                .animation(.easeInOut, value: selectedPeer)
+            }
         }
-        .ignoresSafeArea(.keyboard, edges: .bottom)
-        .alert(item: $multipeerSession.connectedPeers) { peer in
-            Alert(
-                title: Text("초대 수신"),
-                message: Text("‘\(peer.displayName)’님이 초대했습니다. 수락하시겠습니까?"),
-                primaryButton: .default(Text("수락")) {
-                    multipeerSession.respondToInvite(accept: true)
-                },
-                secondaryButton: .cancel(Text("거절")) {
-                    multipeerSession.respondToInvite(accept: false)
-                }
-            )
-        }
+        .ignoresSafeArea()
     }
 }
+
+
 
 #Preview {
     HomeView()
 }
+

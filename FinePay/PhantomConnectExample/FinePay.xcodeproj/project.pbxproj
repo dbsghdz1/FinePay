@@ -12,6 +12,10 @@
 		50B61A832878796C0030CC83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50B61A822878796C0030CC83 /* Assets.xcassets */; };
 		50B61A862878796C0030CC83 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50B61A852878796C0030CC83 /* Preview Assets.xcassets */; };
 		50B61A9428787AB60030CC83 /* PhantomConnect in Frameworks */ = {isa = PBXBuildFile; productRef = 50B61A9328787AB60030CC83 /* PhantomConnect */; };
+		EE621BE12D9E5D04006066C9 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE621BE02D9E5CFA006066C9 /* WalletView.swift */; };
+		EE621BE32D9E6A18006066C9 /* SendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE621BE22D9E6A15006066C9 /* SendView.swift */; };
+		EE621BE52D9E77A7006066C9 /* View+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE621BE42D9E77A0006066C9 /* View+Ex.swift */; };
+		EE621BE72D9FE245006066C9 /* InviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE621BE62D9FE240006066C9 /* InviteView.swift */; };
 		EED7636E2D9D523F00E03109 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED7636D2D9D523D00E03109 /* HomeView.swift */; };
 		EED763702D9D526500E03109 /* PeerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED7636F2D9D525E00E03109 /* PeerView.swift */; };
 		EED763722D9D527D00E03109 /* MultipeerSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED763712D9D527400E03109 /* MultipeerSession.swift */; };
@@ -36,6 +40,10 @@
 		50B61A852878796C0030CC83 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		50B61A8F28787A130030CC83 /* phantom-connect */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "phantom-connect"; path = ..; sourceTree = "<group>"; };
 		50B61A9528787C890030CC83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EE621BE02D9E5CFA006066C9 /* WalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
+		EE621BE22D9E6A15006066C9 /* SendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendView.swift; sourceTree = "<group>"; };
+		EE621BE42D9E77A0006066C9 /* View+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ex.swift"; sourceTree = "<group>"; };
+		EE621BE62D9FE240006066C9 /* InviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteView.swift; sourceTree = "<group>"; };
 		EED7636D2D9D523D00E03109 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		EED7636F2D9D525E00E03109 /* PeerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerView.swift; sourceTree = "<group>"; };
 		EED763712D9D527400E03109 /* MultipeerSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerSession.swift; sourceTree = "<group>"; };
@@ -141,6 +149,9 @@
 		EED7636B2D9D522B00E03109 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EE621BE62D9FE240006066C9 /* InviteView.swift */,
+				EE621BE22D9E6A15006066C9 /* SendView.swift */,
+				EE621BE02D9E5CFA006066C9 /* WalletView.swift */,
 				EED763792D9D5CB900E03109 /* PeerCircleView.swift */,
 				EED7636F2D9D525E00E03109 /* PeerView.swift */,
 				EED7636D2D9D523D00E03109 /* HomeView.swift */,
@@ -272,9 +283,11 @@
 				F1C02EB32D9D998E00F1AFFE /* SendingResultView.swift in Sources */,
 				F1C02EB92D9EAE2E00F1AFFE /* View+Ex.swift in Sources */,
 				EED7637A2D9D5CBC00E03109 /* PeerCircleView.swift in Sources */,
+				EE621BE12D9E5D04006066C9 /* WalletView.swift in Sources */,
 				F1A4D9932D9CD37D00379B28 /* HttpMethod.swift in Sources */,
 				F1A4D9A12D9CDC2900379B28 /* SendSOLView.swift in Sources */,
 				EED763722D9D527D00E03109 /* MultipeerSession.swift in Sources */,
+				EE621BE72D9FE245006066C9 /* InviteView.swift in Sources */,
 				EED763762D9D52B000E03109 /* Peer.swift in Sources */,
 				F1A4D9912D9CCF4E00379B28 /* NetworkManager.swift in Sources */,
 				F1A4D9A32D9CF99E00379B28 /* Color+Ex.swift in Sources */,
@@ -282,7 +295,9 @@
 				EED7636E2D9D523F00E03109 /* HomeView.swift in Sources */,
 				EED763702D9D526500E03109 /* PeerView.swift in Sources */,
 				F1A4D9952D9CD3F100379B28 /* BlockHashModel.swift in Sources */,
+				EE621BE32D9E6A18006066C9 /* SendView.swift in Sources */,
 				50B61A7F2878796B0030CC83 /* FinePay.swift in Sources */,
+				EE621BE52D9E77A7006066C9 /* View+Ex.swift in Sources */,
 				F1C02EB52D9E527100F1AFFE /* Double+Ex.swift in Sources */,
 				F1C02EB12D9D950200F1AFFE /* SendingView.swift in Sources */,
 			);
@@ -348,7 +363,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -402,7 +417,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -420,7 +435,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PhantomConnectExample/Preview Content\"";
-				DEVELOPMENT_TEAM = B6QMD2854G;
+				DEVELOPMENT_TEAM = 34X3BT977M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PhantomConnectExample/Info.plist;
@@ -451,7 +466,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PhantomConnectExample/Preview Content\"";
-				DEVELOPMENT_TEAM = B6QMD2854G;
+				DEVELOPMENT_TEAM = 34X3BT977M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PhantomConnectExample/Info.plist;
