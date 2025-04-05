@@ -61,7 +61,7 @@ FinePay/
 - Phantom Wallet (Devnet)
 - Two iPhones for peer testing
 
-### 실행
+### Run The App
 
 고쳐야 함
 
