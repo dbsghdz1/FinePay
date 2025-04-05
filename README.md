@@ -106,7 +106,7 @@ FinePay delivers that experience using Apple’s native P2P tech and Solana’s 
 - Changhee Lee(Zani) – https://github.com/cchangss
 - Gyeongju Kim(Jacob) – https://github.com/Gimgang00
 - Minseok Kim(Kinder) – https://github.com/alstjr7437
-- Yongwon SEO(Paduck) – https://github.com/paohree
+- Yongwon Seo(Paduck) – https://github.com/paohree
 - Yunhong Kim(Hong) – https://github.com/dbsghdz1
 
 ---
