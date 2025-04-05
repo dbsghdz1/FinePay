@@ -118,7 +118,7 @@ extension HomeView {
     @ViewBuilder
     private func presentSendingSOL() -> some View {
         if let address = multipeerSession.giverAddress {
-            SendSOLView(viewModel: viewModel, giverAddress: address)
+            SendSOLView(viewModel: viewModel, giverAddress: address, nickName: String(multipeerSession.connectPeer?.id.suffix(4) ?? ""))
         }
     }
 }

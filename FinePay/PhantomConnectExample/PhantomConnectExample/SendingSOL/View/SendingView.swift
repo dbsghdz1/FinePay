@@ -20,6 +20,7 @@ struct SendingView {
   let walletPublicKey = UserDefaults.standard.string(forKey: "walletPublicKey")
   let giverAddress: String
   var session = UserDefaults.standard.string(forKey: "session")
+    let nickName: String
   
   var formattedSOLCoin: String {
     if solCoin.truncatingRemainder(dividingBy: 1) == 0 {
@@ -70,7 +71,7 @@ extension SendingView: View {
         Text("to")
           .font(.system(size: 40, weight: .semibold))
           .foregroundStyle(Color.textBlackColor)
-        Text("Hong")
+        Text("\(nickName)")
           .font(.system(size: 40, weight: .bold))
           .foregroundStyle(Color.mainColor)
       }
@@ -163,5 +164,5 @@ extension SendingView: View {
 }
 
 #Preview(body: {
-    SendingView(solCoin: 0.0, viewModel: PhantomConnectViewModel(), giverAddress: "")
+    SendingView(solCoin: 0.0, viewModel: PhantomConnectViewModel(), giverAddress: "", nickName: "hello")
 })

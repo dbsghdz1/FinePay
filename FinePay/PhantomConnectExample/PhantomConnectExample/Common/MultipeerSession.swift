@@ -15,6 +15,7 @@ class MultipeerSession: NSObject, ObservableObject {
     private let session: MCSession
     private let log = Logger()
     let myPeerId = MCPeerID(displayName: UUID().uuidString)
+    var connectPeer: Peer? = nil
     
     @Published var foundPeers: [Peer] = []
     @Published var connectedPeers: [MCPeerID] = []
@@ -115,7 +116,6 @@ extension MultipeerSession: MCNearbyServiceBrowserDelegate {
                  foundPeer peerID: MCPeerID,
                  withDiscoveryInfo info: [String: String]?) {
         let peer = peer(for: peerID)
-        print(peer)
         DispatchQueue.main.async {
             if !self.foundPeers.contains(where: { $0.id == peerID.displayName }) {
                 self.foundPeers.append(peer)
@@ -137,6 +137,7 @@ extension MultipeerSession: MCNearbyServiceBrowserDelegate {
 extension MultipeerSession: MCSessionDelegate {
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
         log.info("🔁 피어 상태 변경: \(peerID.displayName) → \(state.rawValue)")
+        connectPeer = peer(for: peerID)
         DispatchQueue.main.async {
             switch state {
             case .connected:
