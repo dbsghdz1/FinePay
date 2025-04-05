@@ -8,137 +8,146 @@
 import MultipeerConnectivity
 import os
 
-/// # Mlultipeer Session 객체
-/// serviceType :  서비스를 식별
-/// foundPeers : 찾은 피어들(유저들)
-/// connectedPeers : 현재 연결 중인 유저
-
 class MultipeerSession: NSObject, ObservableObject {
-
     private let serviceType = "MCTest"
-    private let myPeerId = MCPeerID(displayName: UIDevice.current.name)
+    private let myPeerId = MCPeerID(displayName: UUID().uuidString) // ✅ PeerID 고유화
     private let serviceAdvertiser: MCNearbyServiceAdvertiser
     private let serviceBrowser: MCNearbyServiceBrowser
     private let session: MCSession
     private let log = Logger()
     
     @Published var foundPeers: [Peer] = []
-    @Published var connectedPeers: MCPeerID?
-    private var pendingInvitationHandler: ((Bool, MCSession?) -> Void)?
-
-    // MARK: init
+    @Published var connectedPeers: [MCPeerID] = [] // ✅ 배열로 수정
+    @Published var sendingFromPeer: Peer?
     
+    private var pendingInvitationHandler: ((Bool, MCSession?) -> Void)?
+    
+    // MARK: init
     override init() {
-        session = MCSession(peer: myPeerId, securityIdentity: nil, encryptionPreference: .none)
+        session = MCSession(peer: myPeerId, securityIdentity: nil, encryptionPreference: .required)
         serviceAdvertiser = MCNearbyServiceAdvertiser(peer: myPeerId, discoveryInfo: nil, serviceType: serviceType)
         serviceBrowser = MCNearbyServiceBrowser(peer: myPeerId, serviceType: serviceType)
-
+        
         super.init()
-
+        
         session.delegate = self
         serviceAdvertiser.delegate = self
         serviceBrowser.delegate = self
-
+        
         serviceAdvertiser.startAdvertisingPeer()
         serviceBrowser.startBrowsingForPeers()
+        
+        log.info("🔄 MultipeerSession initialized for \(self.myPeerId.displayName)")
     }
-
+    
     deinit {
         serviceAdvertiser.stopAdvertisingPeer()
         serviceBrowser.stopBrowsingForPeers()
+        log.info("🛑 MultipeerSession deinitialized")
     }
     
-    // MARK: Custom Method
-    
+    // MARK: custom Method
     func invite(_ peer: Peer) {
-        let mcPeerID = MCPeerID(displayName: peer.id)
-        log.info("📩 초대 전송: \(mcPeerID.displayName)")
-        serviceBrowser.invitePeer(mcPeerID, to: session, withContext: nil, timeout: 10)
+        let userPeer = MCPeerID(displayName: peer.id)
+        log.info("📩 초대 전송: \(userPeer.displayName)")
+        serviceBrowser.invitePeer(userPeer, to: session, withContext: nil, timeout: 10)
     }
     
     func send() {
-        log.info("send to \(self.session.connectedPeers.count) peers")
+        log.info("✉️ send() 호출됨, 현재 연결 수: \(self.session.connectedPeers.count)")
     }
 
     func respondToInvite(accept: Bool) {
         if let handler = pendingInvitationHandler {
+            log.info("🟢 초대 \(accept ? "수락" : "거절")")
             handler(accept, session)
             pendingInvitationHandler = nil
         }
-        connectedPeers = nil
+    }
+
+    private func peer(for peerID: MCPeerID) -> Peer {
+        return Peer(id: peerID.displayName, displayName: peerID.displayName, wallet: "", peerID: peerID)
     }
 }
 
-// MARK: - 근처 피어로 세션 초대시
+// MARK: - Advertiser Delegate
 
 extension MultipeerSession: MCNearbyServiceAdvertiserDelegate {
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: Error) {
-        log.error("ServiceAdvertiser didNotStartAdvertisingPeer: \(String(describing: error))")
+        log.error("❌ Advertiser 시작 실패: \(String(describing: error))")
     }
-    
+
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser,
                     didReceiveInvitationFromPeer peerID: MCPeerID,
                     withContext context: Data?,
                     invitationHandler: @escaping (Bool, MCSession?) -> Void) {
+        log.info("📥 초대 수신: \(peerID.displayName)")
         DispatchQueue.main.async {
-            self.connectedPeers = peerID
             self.pendingInvitationHandler = invitationHandler
+            self.sendingFromPeer = self.peer(for: peerID)
+            // 초대는 수동 수락
+            // 👉 연결은 사용자가 respondToInvite()에서 수락할 때 수행
         }
     }
 }
 
-// MARK: - 브라우저 이벤트 처리 위임자
+// MARK: - Browser Delegate
 
 extension MultipeerSession: MCNearbyServiceBrowserDelegate {
     func browser(_ browser: MCNearbyServiceBrowser, didNotStartBrowsingForPeers error: Error) {
-        log.error("ServiceBrowser didNotStartBrowsingForPeers: \(String(describing: error))")
+        log.error("❌ Browser 시작 실패: \(String(describing: error))")
     }
 
-    func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String: String]?) {
-        log.info("ServiceBrowser found peer: \(peerID)")
+    func browser(_ browser: MCNearbyServiceBrowser,
+                 foundPeer peerID: MCPeerID,
+                 withDiscoveryInfo info: [String: String]?) {
+        let peer = peer(for: peerID)
+        print(peer)
         DispatchQueue.main.async {
             if !self.foundPeers.contains(where: { $0.id == peerID.displayName }) {
-                // TODO: - 추후에 wallet 주소 받아서 넣기
-                self.foundPeers.append(Peer(id: peerID.displayName, wallet: ""))
+                self.foundPeers.append(peer)
+                self.log.info("🔍 피어 발견: \(peerID.displayName)")
             }
         }
     }
 
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
-        log.info("ServiceBrowser lost peer: \(peerID)")
-        
+        log.info("⚠️ 피어 손실: \(peerID.displayName)")
         DispatchQueue.main.async {
-            self.foundPeers.removeAll(where: { $0.id == peerID.displayName })
+            self.foundPeers.removeAll { $0.id == peerID.displayName }
         }
     }
 }
 
-// MARK: - Session 위임자
+// MARK: - Session Delegate
 
 extension MultipeerSession: MCSessionDelegate {
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
-        log.info("peer \(peerID) didChangeState: \(state.rawValue)")
+        log.info("🔁 피어 상태 변경: \(peerID.displayName) → \(state.rawValue)")
         DispatchQueue.main.async {
-            self.connectedPeers = peerID
+            switch state {
+            case .connected:
+                if !self.connectedPeers.contains(peerID) {
+                    self.connectedPeers.append(peerID)
+                }
+            case .notConnected:
+                self.connectedPeers.removeAll { $0 == peerID }
+            default:
+                break
+            }
         }
     }
 
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        log.info("didReceive")
+        log.info("📦 데이터 수신: \(data.count) bytes from \(peerID.displayName)")
     }
 
-    public func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
-        log.error("Receiving streams is not supported")
-    }
-    
-    public func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
-        log.error("Receiving resources is not supported")
-    }
-
-    public func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
-        log.error("Receiving resources is not supported")
-    }
+    func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {}
+    func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {}
+    func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {}
 }
+
+// MARK: - PeerID Identifiable
 
 extension MCPeerID: @retroactive Identifiable {
     public var id: String { displayName }

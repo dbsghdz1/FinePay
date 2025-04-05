@@ -43,9 +43,9 @@ struct PeerView: View {
             ForEach(peers.indices, id: \.self) { index in
                 let peer = peers[index]
 
-                if let position = peerPositions[peer.id] {
+                if let position = peerPositions[peer.displayName] {
                     PeerCircleView(
-                        name: peer.id,
+                        name: peer.displayName,
                         emoji: emojis[index % emojis.count],
                         onTap: {
                             inviteAction(peer)
