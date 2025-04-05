@@ -32,12 +32,15 @@ struct SendingWalletTextView: View {
     let displayName: String
     
     var body: some View {
-        Text(displayName)
-            .font(.system(size: 26, weight: .bold))
-            .foregroundStyle(Color.mainColor)
-        +
-        Text(" want your wallet address")
-            .font(.system(size: 26, weight: .semibold))
+        (
+            Text(displayName.suffix(4))
+                .font(.system(size: 26, weight: .bold))
+                .foregroundStyle(Color.mainColor)
+            +
+            Text(" want your wallet address")
+                .font(.system(size: 26, weight: .semibold))
+        )
+        .multilineTextAlignment(.center)
     }
 }
 

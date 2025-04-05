@@ -60,8 +60,9 @@ struct SentTextView: View {
                 Text("Solana to ")
                     .font(.system(size: 26, weight: .semibold))
                 +
-                Text(displayName)
+                Text(displayName.suffix(4))
                     .font(.system(size: 26, weight: .bold))
+                    .foregroundStyle(Color.mainColor)
             )
         }
         .multilineTextAlignment(.center)

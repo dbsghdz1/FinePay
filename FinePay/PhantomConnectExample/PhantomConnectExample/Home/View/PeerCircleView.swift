@@ -15,7 +15,7 @@ struct PeerCircleView: View {
     var body: some View {
         VStack {
             Text(emoji).font(.largeTitle)
-            Text(name).font(.caption)
+            Text(name.suffix(4)).font(.caption)
         }
         .onTapGesture {
             onTap()
