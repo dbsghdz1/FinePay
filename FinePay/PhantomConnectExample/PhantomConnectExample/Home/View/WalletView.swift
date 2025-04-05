@@ -17,9 +17,11 @@ struct BottomWalletView {
   @State var phantomEncryptionKey: PublicKey?
   @State var session: String?
   @State var solCoin = ""
+  let sessionID: String
 }
 
 extension BottomWalletView: View {
+    
   var body: some View {
     VStack() {
       Capsule()
@@ -33,9 +35,13 @@ extension BottomWalletView: View {
             .fontWeight(.semibold)
             .foregroundColor(.textBlackColor)
             .font(.system(size: 26))
-          Text(walletConnected ? "Connected" : "Not Connected")
+            Text(walletConnected ? "Connected" : "Not Connected #\(sessionID)")
             .fontWeight(.semibold)
             .foregroundColor(.notConnectedColor)
+            .font(.system(size: 18))
+          Text("#\(sessionID)")
+            .fontWeight(.semibold)
+            .foregroundColor(Color.mainColor)
             .font(.system(size: 18))
         }
         Spacer()
@@ -94,8 +100,6 @@ extension BottomWalletView: View {
                 solCoin = try await NetworkManager.shared.fetchSOLBalance(
                   address: walletPublicKey?.base58EncodedString ?? ""
                 )
-              } catch {
-                
               }
             }
           })
@@ -109,7 +113,7 @@ extension BottomWalletView: View {
             RoundedRectangle(cornerRadius: 14)
               .fill(Color.white)
         )
-        .padding(.top, 34)
+//        .padding(.top, 25)
       }
       Spacer(minLength: 10)
     }

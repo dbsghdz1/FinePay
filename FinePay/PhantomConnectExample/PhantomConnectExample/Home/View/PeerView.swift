@@ -28,7 +28,7 @@ struct PeerView: View {
         let center = CGPoint(x: geometry.size.width / 2, y: geometry.size.height / 2)
         var fixedPositions: [CGPoint] = (0..<9).map { _ in
             let angle = Double.random(in: 0..<(2 * .pi))
-            let distance = Double.random(in: 100...200)
+            let distance = Double.random(in: 150...200)
             let x = center.x + CGFloat(cos(angle) * distance)
             let y = center.y + CGFloat(sin(angle) * distance)
             return CGPoint(x: x, y: y)
@@ -68,6 +68,7 @@ struct PeerView: View {
                 if !fixedPositions.isEmpty {
                     peerPositions[peer.id] = fixedPositions.removeFirst()
                 } else {
+                    print("hello")
                     peerPositions[peer.id] = center
                 }
             }

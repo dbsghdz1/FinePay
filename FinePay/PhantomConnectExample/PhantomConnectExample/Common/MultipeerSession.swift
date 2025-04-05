@@ -10,14 +10,14 @@ import os
 
 class MultipeerSession: NSObject, ObservableObject {
     private let serviceType = "MCTest"
-    private let myPeerId = MCPeerID(displayName: UUID().uuidString) // ✅ PeerID 고유화
     private let serviceAdvertiser: MCNearbyServiceAdvertiser
     private let serviceBrowser: MCNearbyServiceBrowser
     private let session: MCSession
     private let log = Logger()
+    let myPeerId = MCPeerID(displayName: UUID().uuidString)
     
     @Published var foundPeers: [Peer] = []
-    @Published var connectedPeers: [MCPeerID] = [] // ✅ 배열로 수정
+    @Published var connectedPeers: [MCPeerID] = []
     @Published var sendingFromPeer: Peer?
     @Published var giverAddress: String?
     

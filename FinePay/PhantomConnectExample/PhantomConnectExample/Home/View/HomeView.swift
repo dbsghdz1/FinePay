@@ -28,7 +28,7 @@ struct HomeView: View {
                 )
                 .padding()
                 
-                BottomWalletView(viewModel: viewModel)
+                BottomWalletView(viewModel: viewModel, sessionID: String(multipeerSession.myPeerId.id.suffix(4)))
                     .padding(.bottom, 40)
             }
 
