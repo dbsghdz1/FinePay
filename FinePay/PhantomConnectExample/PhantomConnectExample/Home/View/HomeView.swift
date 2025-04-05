@@ -10,6 +10,8 @@ import SwiftUI
 struct HomeView: View {
     @StateObject var multipeerSession = MultipeerSession()
     @State private var selectedPeer: Peer? = nil
+    @State private var sendingFromPeer: Peer? = nil
+    @State private var isConnectingToPeer: Bool = false
     @State private var isSheetPresented = false
 
     var body: some View {
@@ -22,7 +24,7 @@ struct HomeView: View {
                     inviteAction: { peer in
                         withAnimation {
                             selectedPeer = peer
-                        }
+                            sendingFromPeer = nil                        }
                     }
                 )
                 .padding()
@@ -31,12 +33,15 @@ struct HomeView: View {
                     .padding(.bottom, 40)
             }
             
-            if selectedPeer != nil {
+            if selectedPeer != nil || sendingFromPeer != nil {
                 Color.black.opacity(0.4)
                     .ignoresSafeArea()
                     .transition(.opacity)
                     .onTapGesture {
-                        withAnimation { selectedPeer = nil }
+                        withAnimation {
+                            selectedPeer = nil
+                            sendingFromPeer = nil
+                        }
                     }
             }
             
@@ -51,7 +56,27 @@ struct HomeView: View {
                 .transition(.move(edge: .bottom))
                 .animation(.easeInOut, value: selectedPeer)
             }
+            if let peer = sendingFromPeer {
+                SendingWalletAddressPopupView(
+                    peer: peer,
+                    onSend: {
+                        print("Send wallet address to \(peer.id)")
+                        withAnimation {
+                            sendingFromPeer = nil
+                        }
+                    },
+                    reject: {
+                        print("Rejected \(peer.id)'s request")
+                        withAnimation {
+                            sendingFromPeer = nil
+                        }
+                    }
+                )
+                .transition(.move(edge: .bottom))
+            }
         }
+        .animation(.easeInOut, value: selectedPeer)
+        .animation(.easeInOut, value: sendingFromPeer)
         .ignoresSafeArea()
     }
 }

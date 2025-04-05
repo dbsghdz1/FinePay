@@ -14,6 +14,7 @@ extension Color {
   static let solPriceContainer = Color(hex: "#767680")
   static let sendingSolNavHeader = Color(hex: "#F4F4F4")
   static let textBlackColor = Color(hex: "#2C2C2C")
+  static let buttonGrayColor = Color(hex: "#AFAFAF")
 }
 
 extension Color {
