@@ -7,9 +7,13 @@
 
 import SwiftUI
 
+import PhantomConnect
+
 struct HomeView: View {
     @StateObject var multipeerSession = MultipeerSession()
     @State private var selectedPeer: Peer? = nil
+    //TODO: Viewmodel 수정
+    private let viewModel = PhantomConnectViewModel()
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -31,6 +35,7 @@ struct HomeView: View {
             dimmedBackground()
             invitePopup()
             sendingWalletPopup()
+            presentSendingSOL()
         }
         .ignoresSafeArea()
     }
@@ -73,12 +78,15 @@ extension HomeView {
                 peer: peer,
                 onSend: {
                     print("✅ Send wallet address to \(peer.id)")
+                    let myAddress = UserDefaults.standard.string(forKey: "walletPublicKey") ?? ""
+                    multipeerSession.respondToInvite(accept: true, address: myAddress)
                     withAnimation {
                         multipeerSession.sendingFromPeer = nil
                     }
                 },
                 reject: {
                     print("❌ Rejected \(peer.id)'s request")
+                    multipeerSession.respondToInvite(accept: false, address: "")
                     withAnimation {
                         multipeerSession.sendingFromPeer = nil
                     }
@@ -86,6 +94,13 @@ extension HomeView {
             )
             .transition(.move(edge: .bottom))
             .animation(.easeInOut, value: multipeerSession.sendingFromPeer)
+        }
+    }
+    
+    @ViewBuilder
+    private func presentSendingSOL() -> some View {
+        if let address = multipeerSession.giverAddress {
+            SendSOLView(viewModel: viewModel, giverAddress: address)
         }
     }
 }

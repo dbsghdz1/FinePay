@@ -101,7 +101,7 @@ struct ContentView: View {
         Text("nextScreen")
       }
       .navigationDestination(isPresented: $isButtonClicked) {
-        SendSOLView(viewModel: viewModel)
+          SendSOLView(viewModel: viewModel, giverAddress: "")
       }
       .onAppear {
         if let publicKeyString = walletPublicKey?.base58EncodedString {
