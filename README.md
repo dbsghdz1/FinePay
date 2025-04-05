@@ -102,11 +102,11 @@ FinePay delivers that experience using Apple’s native P2P tech and Solana’s 
 
 ## 👨‍💻 Authors
 
-- 김경주(Jacob) – [@GitHub](https://github.com/yourhandle)
-- 김민석(Kinder) – [@GitHub](https://github.com/yourhandle)
-- 김윤홍(Hong) – [@GitHub](https://github.com/yourhandle)
-- 서용원(Paduck) – [@GitHub](https://github.com/yourhandle)
-- 이창희(Zani) – [@GitHub](https://github.com/yourhandle)
+- Changhee Lee(Zani) – https://github.com/cchangss
+- Gyeongju Kim(Jacob) – https://github.com/Gimgang00
+- Minseok Kim(Kinder) – https://github.com/alstjr7437
+- Yongwon SEO(Paduck) – https://github.com/paohree
+- Yunhong Kim(Hong) – https://github.com/dbsghdz1
 
 ---
 
@@ -217,10 +217,10 @@ Finepay는 바로 그 경험을 Swift와 Solana로 실현했습니다.
 
 ## 👨‍💻 개발자
 
-- 김경주(Jacob) – [@GitHub](https://github.com/yourhandle)
-- 김민석(Kinder) – [@GitHub](https://github.com/yourhandle)
-- 김윤홍(Hong) – [@GitHub](https://github.com/yourhandle)
-- 서용원(Paduck) – [@GitHub](https://github.com/yourhandle)
-- 이창희(Zani) – [@GitHub](https://github.com/yourhandle)
+- 김경주(Jacob) – https://github.com/Gimgang00
+- 김민석(Kinder) – https://github.com/alstjr7437
+- 김윤홍(Hong) –  https://github.com/dbsghdz1
+- 서용원(Paduck) – https://github.com/paohree
+- 이창희(Zani) – https://github.com/cchangss
 
 
