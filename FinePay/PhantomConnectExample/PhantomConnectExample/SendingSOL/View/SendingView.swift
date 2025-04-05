@@ -18,7 +18,7 @@ struct SendingView {
   @StateObject var viewModel: PhantomConnectViewModel
   let phantomEncryptionKey = UserDefaults.standard.string(forKey: "phantomEncryptionKey")
   let walletPublicKey = UserDefaults.standard.string(forKey: "walletPublicKey")
-  let paduckWallet = "B9hNZruBjAQSdrYYvktnPgGTPsVbY82MyxCZcHraVsZZ"
+  let giverAddress: String
   var session = UserDefaults.standard.string(forKey: "session")
   
   var formattedSOLCoin: String {
@@ -144,7 +144,7 @@ extension SendingView: View {
           instructions: [
             SystemProgram.transferInstruction(
               from: PublicKey(string: "8zvV1Gig5i1pHbyXbqEQBHTe2Ft8qvzR9CPziZQ5p3ET")!,
-              to: PublicKey(string: paduckWallet)!,
+              to: PublicKey(string: giverAddress)!,
               lamports: UInt64(1000000000.0 * solCoin)
             )
           ],
@@ -163,5 +163,5 @@ extension SendingView: View {
 }
 
 #Preview(body: {
-  SendingView(solCoin: 0.0, viewModel: PhantomConnectViewModel())
+    SendingView(solCoin: 0.0, viewModel: PhantomConnectViewModel(), giverAddress: "")
 })
