@@ -26,6 +26,13 @@ struct PeerView: View {
     private func renderPeerView(in geometry: GeometryProxy) -> some View{
         let radius = min(geometry.size.width, geometry.size.height) / 3
         let center = CGPoint(x: geometry.size.width / 2, y: geometry.size.height / 2)
+        var fixedPositions: [CGPoint] = (0..<9).map { _ in
+            let angle = Double.random(in: 0..<(2 * .pi))
+            let distance = Double.random(in: 100...200)
+            let x = center.x + CGFloat(cos(angle) * distance)
+            let y = center.y + CGFloat(sin(angle) * distance)
+            return CGPoint(x: x, y: y)
+        }.shuffled()
         
         ZStack {
             // stroke 생성
@@ -56,15 +63,13 @@ struct PeerView: View {
             }
         }
         .onChange(of: peers) { newPeers in
-            let currentIDs = Set(newPeers.map { $0.id })
-            peerPositions = peerPositions.filter { currentIDs.contains($0.key) }
             
             for peer in newPeers where peerPositions[peer.id] == nil {
-                let angle = Double.random(in: 0...(2 * .pi))
-                let distance = Double.random(in: 40...(radius - 40))
-                let x = center.x + CGFloat(cos(angle) * distance)
-                let y = center.y + CGFloat(sin(angle) * distance)
-                peerPositions[peer.id] = CGPoint(x: x, y: y)
+                if !fixedPositions.isEmpty {
+                    peerPositions[peer.id] = fixedPositions.removeFirst()
+                } else {
+                    peerPositions[peer.id] = center
+                }
             }
         }
     }
