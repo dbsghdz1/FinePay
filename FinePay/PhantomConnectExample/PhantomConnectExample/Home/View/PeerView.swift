@@ -11,14 +11,13 @@ struct PeerView: View {
     let peers: [Peer]
     let inviteAction: (Peer) -> Void
     let centerEmoji = "😊"
-    let centerLabel = "나"
-    let emojis = ["👾", "🤖", "👻", "🧠", "👽", "🐸", "🦄", "🐙"]
+    let centerLabel = "Me"
+    let emojis = ["🦇", "🤖", "👻", "🦦", "🐒", "🐸", "🧸", "🐥"]
     
     @State private var peerPositions: [String: CGPoint] = [:]
     
     var body: some View {
         GeometryReader { geometry in
-            renderPeerView(in: geometry)
         }
     }
     
