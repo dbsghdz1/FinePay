@@ -15,6 +15,7 @@ extension Color {
   static let sendingSolNavHeader = Color(hex: "#F4F4F4")
   static let textBlackColor = Color(hex: "#2C2C2C")
   static let buttonGrayColor = Color(hex: "#AFAFAF")
+  static let notConnectedColor = Color(hex: "#6C6C6C")
 }
 
 extension Color {
