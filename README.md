@@ -1,6 +1,6 @@
 #Korean below
 
-# 📡 SolShare – Peer-to-Peer Wallet Address Sharing & Solana Transfer
+# 📡 FinePay – Peer-to-Peer Wallet Address Sharing & Solana Transfer
 
 An iOS app built with Swift that allows seamless exchange of wallet addresses and instant Solana transfers between iPhones using MultipeerConnectivity.
 
@@ -39,8 +39,9 @@ An iOS app built with Swift that allows seamless exchange of wallet addresses an
 
 ## 🏗️ Project Structure
 
+고쳐야 함
 
-SolShare/
+FinePay/
 ├── Sources/
 │   ├── Connectivity/       # Peer connection and session handling
 │   ├── Wallet/             # Phantom interaction and Solana transactions
@@ -56,11 +57,13 @@ SolShare/
 ### Requirements
 
 - Xcode 15+
-- iOS 16.0+
+- iOS 17.0+
 - Phantom Wallet (Devnet)
 - Two iPhones for peer testing
 
-### Run the App
+### 실행
+
+고쳐야 함
 
 (bash)
 git clone https://github.com/your-username/solshare.git
@@ -68,8 +71,7 @@ cd solshare
 open SolShare.xcodeproj
 
 
-> Run the app on two physical iPhones to test P2P address exchange and SOL transfer.
-
+> 두 개의 iPhone에서 실행하면, 기기 간 주소 교환과 송금을 테스트할 수 있습니다.
 ---
 
 ## 🔮 Future Plans
@@ -86,7 +88,7 @@ open SolShare.xcodeproj
 
 Most wallet transfers rely on copy-pasting or QR codes.  
 We asked: _“What if sending crypto was as easy as AirDrop?”_  
-SolShare delivers that experience using Apple’s native P2P tech and Solana’s speed.
+FinePay delivers that experience using Apple’s native P2P tech and Solana’s speed.
 
 ---
 
@@ -100,8 +102,11 @@ SolShare delivers that experience using Apple’s native P2P tech and Solana’s
 
 ## 👨‍💻 Authors
 
-- [Your Name] – [@yourhandle](https://github.com/yourhandle)
-- [Teammate Name] – [@theirhandle](https://github.com/theirhandle)
+- 김경주(Jacob) – [@GitHub](https://github.com/yourhandle)
+- 김민석(Kinder) – [@GitHub](https://github.com/yourhandle)
+- 김윤홍(Hong) – [@GitHub](https://github.com/yourhandle)
+- 서용원(Paduck) – [@GitHub](https://github.com/yourhandle)
+- 이창희(Zani) – [@GitHub](https://github.com/yourhandle)
 
 ---
 
@@ -109,7 +114,7 @@ SolShare delivers that experience using Apple’s native P2P tech and Solana’s
 
 ---
 
-# 📡 SolShare – 기기간 지갑 주소 공유 & Solana 송금 앱
+# 📡 FinePay – 기기간 지갑 주소 공유 & Solana 송금 앱
 
 iPhone 간의 근거리 연결을 통해 Phantom 지갑 주소를 자동 공유하고, Solana(SOL)를 즉시 송금하는 Swift 기반 모바일 앱입니다.
 
@@ -148,8 +153,9 @@ iPhone 간의 근거리 연결을 통해 Phantom 지갑 주소를 자동 공유�
 
 ## 🏗️ 프로젝트 구조
 
+고쳐야 함
 
-SolShare/
+FinePay/
 ├── Sources/
 │   ├── Connectivity/       # 피어 연결 및 세션 처리
 │   ├── Wallet/             # Phantom 연동 및 Solana 트랜잭션 처리
@@ -165,11 +171,13 @@ SolShare/
 ### 요구 사항
 
 - Xcode 15 이상
-- iOS 16.0 이상
+- iOS 17.0 이상
 - Phantom 지갑 (Devnet 설정)
 - 실기기 2대 (P2P 테스트용)
 
 ### 실행
+
+고쳐야 함
 
 (bash)
 git clone https://github.com/your-username/solshare.git
@@ -195,7 +203,7 @@ open SolShare.xcodeproj
 
 지금까지 대부분의 지갑 송금은 주소 복붙, 메시지 공유, QR 스캔에 의존하고 있었습니다.  
 우리는 물었습니다: **“AirDrop처럼 자연스럽게 지갑을 공유하고 보낼 순 없을까?”**  
-SolShare는 바로 그 경험을 Swift와 Solana로 실현했습니다.
+Finepay는 바로 그 경험을 Swift와 Solana로 실현했습니다.
 
 ---
 
@@ -209,6 +217,10 @@ SolShare는 바로 그 경험을 Swift와 Solana로 실현했습니다.
 
 ## 👨‍💻 개발자
 
-- [당신의 이름] – [@GitHub](https://github.com/yourhandle)
-- [팀원 이름] – [@GitHub](https://github.com/theirhandle)
+- 김경주(Jacob) – [@GitHub](https://github.com/yourhandle)
+- 김민석(Kinder) – [@GitHub](https://github.com/yourhandle)
+- 김윤홍(Hong) – [@GitHub](https://github.com/yourhandle)
+- 서용원(Paduck) – [@GitHub](https://github.com/yourhandle)
+- 이창희(Zani) – [@GitHub](https://github.com/yourhandle)
+
 
