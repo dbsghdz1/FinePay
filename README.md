@@ -116,7 +116,7 @@ FinePay delivers that experience using Apple’s native P2P tech and Solana’s 
 
 ---
 
-# 📡 FinePay  
+# FinePay  
 기기간 지갑 주소 공유 & Solana 송금 앱
 
 iPhone 간의 근거리 연결을 통해 Phantom 지갑 주소를 자동 공유하고, Solana(SOL)를 즉시 송금하는 Swift 기반 모바일 앱입니다.
