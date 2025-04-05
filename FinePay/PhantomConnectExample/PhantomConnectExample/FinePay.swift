@@ -7,11 +7,13 @@
 
 import SwiftUI
 
+import PhantomConnect
+
 @main
 struct FinePay: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+  var body: some Scene {
+    WindowGroup {
+      HomeView()
     }
+  }
 }
