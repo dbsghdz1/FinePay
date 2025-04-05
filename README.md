@@ -37,21 +37,6 @@ An iOS app built with Swift that allows seamless exchange of wallet addresses an
 
 ---
 
-## 🏗️ Project Structure
-
-고쳐야 함
-
-FinePay/
-├── Sources/
-│   ├── Connectivity/       # Peer connection and session handling
-│   ├── Wallet/             # Phantom interaction and Solana transactions
-│   └── UI/                 # SwiftUI views
-├── Assets/                 # App icons and preview images
-└── README.md
-
-
----
-
 ## 🚀 Getting Started
 
 ### Requirements
@@ -61,7 +46,7 @@ FinePay/
 - Phantom Wallet (Devnet)
 - Two iPhones for peer testing
 
-### 실행
+### Run The App
 
 고쳐야 함
 
@@ -102,11 +87,11 @@ FinePay delivers that experience using Apple’s native P2P tech and Solana’s 
 
 ## 👨‍💻 Authors
 
-- 김경주(Jacob) – [@GitHub](https://github.com/yourhandle)
-- 김민석(Kinder) – [@GitHub](https://github.com/yourhandle)
-- 김윤홍(Hong) – [@GitHub](https://github.com/yourhandle)
-- 서용원(Paduck) – [@GitHub](https://github.com/yourhandle)
-- 이창희(Zani) – [@GitHub](https://github.com/yourhandle)
+- Changhee Lee(Zani) – https://github.com/cchangss
+- Gyeongju Kim(Jacob) – https://github.com/Gimgang00
+- Minseok Kim(Kinder) – https://github.com/alstjr7437
+- Yongwon SEO(Paduck) – https://github.com/paohree
+- Yunhong Kim(Hong) – https://github.com/dbsghdz1
 
 ---
 
@@ -148,21 +133,6 @@ iPhone 간의 근거리 연결을 통해 Phantom 지갑 주소를 자동 공유�
 | 지갑 연동     | Phantom Mobile Wallet       |
 | 블록체인      | Solana (Devnet)             |
 | 플랫폼        | iOS                         |
-
----
-
-## 🏗️ 프로젝트 구조
-
-고쳐야 함
-
-FinePay/
-├── Sources/
-│   ├── Connectivity/       # 피어 연결 및 세션 처리
-│   ├── Wallet/             # Phantom 연동 및 Solana 트랜잭션 처리
-│   └── UI/                 # SwiftUI 화면
-├── Assets/                 # 아이콘 및 프리뷰 이미지
-└── README.md
-
 
 ---
 
@@ -217,10 +187,10 @@ Finepay는 바로 그 경험을 Swift와 Solana로 실현했습니다.
 
 ## 👨‍💻 개발자
 
-- 김경주(Jacob) – [@GitHub](https://github.com/yourhandle)
-- 김민석(Kinder) – [@GitHub](https://github.com/yourhandle)
-- 김윤홍(Hong) – [@GitHub](https://github.com/yourhandle)
-- 서용원(Paduck) – [@GitHub](https://github.com/yourhandle)
-- 이창희(Zani) – [@GitHub](https://github.com/yourhandle)
+- 김경주(Jacob) – https://github.com/Gimgang00
+- 김민석(Kinder) – https://github.com/alstjr7437
+- 김윤홍(Hong) –  https://github.com/dbsghdz1
+- 서용원(Paduck) – https://github.com/paohree
+- 이창희(Zani) – https://github.com/cchangss
 
 
