@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SendView: View {
+struct InvitePopupView: View {
     let peer: Peer
     let onSend: () -> Void
 
@@ -70,5 +70,5 @@ struct SentTextView: View {
 }
 
 #Preview {
-    SendView(peer: Peer(id: "hello", wallet: ""), onSend: {} )
+    InvitePopupView(peer: Peer(id: "hello", wallet: ""), onSend: {} )
 }

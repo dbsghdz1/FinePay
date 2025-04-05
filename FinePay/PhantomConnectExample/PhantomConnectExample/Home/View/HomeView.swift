@@ -41,7 +41,7 @@ struct HomeView: View {
             }
             
             if let peer = selectedPeer {
-                SendView(peer: peer) {
+                InvitePopupView(peer: peer) {
                     multipeerSession
                         .invite(peer)
                     withAnimation {
