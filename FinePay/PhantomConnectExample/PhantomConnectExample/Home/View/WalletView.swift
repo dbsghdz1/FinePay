@@ -94,6 +94,22 @@ extension BottomWalletView: View {
               .foregroundColor(.textBlackColor)
 //              .padding(.horizontal)
           }
+            Spacer()
+            Button(action: {
+                Task {
+                  do {
+                    solCoin = try await NetworkManager.shared.fetchSOLBalance(
+                      address: walletPublicKey?.base58EncodedString ?? ""
+                    )
+                  }
+                }
+            }, label: {
+                Image(systemName: "arrow.clockwise")
+                    .resizable()
+                    .foregroundStyle(Color.black)
+                    .frame(width: 15, height: 15)
+            })
+            .padding(.trailing)
           .onAppear(perform: {
             Task {
               do {
@@ -104,7 +120,7 @@ extension BottomWalletView: View {
             }
           })
           .padding(.leading, 0)
-          Spacer()
+//          Spacer()
         }
         .padding(.vertical, 11)
         .padding(.leading, 8)
