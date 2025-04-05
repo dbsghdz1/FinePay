@@ -37,21 +37,6 @@ An iOS app built with Swift that allows seamless exchange of wallet addresses an
 
 ---
 
-## 🏗️ Project Structure
-
-고쳐야 함
-
-FinePay/
-├── Sources/
-│   ├── Connectivity/       # Peer connection and session handling
-│   ├── Wallet/             # Phantom interaction and Solana transactions
-│   └── UI/                 # SwiftUI views
-├── Assets/                 # App icons and preview images
-└── README.md
-
-
----
-
 ## 🚀 Getting Started
 
 ### Requirements
@@ -148,21 +133,6 @@ iPhone 간의 근거리 연결을 통해 Phantom 지갑 주소를 자동 공유�
 | 지갑 연동     | Phantom Mobile Wallet       |
 | 블록체인      | Solana (Devnet)             |
 | 플랫폼        | iOS                         |
-
----
-
-## 🏗️ 프로젝트 구조
-
-고쳐야 함
-
-FinePay/
-├── Sources/
-│   ├── Connectivity/       # 피어 연결 및 세션 처리
-│   ├── Wallet/             # Phantom 연동 및 Solana 트랜잭션 처리
-│   └── UI/                 # SwiftUI 화면
-├── Assets/                 # 아이콘 및 프리뷰 이미지
-└── README.md
-
 
 ---
 
