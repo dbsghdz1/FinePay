@@ -53,12 +53,15 @@ git clone https://github.com/dbsghdz1/FinePay.git
 
 go to FinePay/PhantomConnectExample
 
+
 run FinePay.xcodeproj
 
 wait a few minutes for indexing, this is This process may vary depending on the computer.
 
+
 Run the project. you might need (two iphone) or (simulate and iphone). if this is your first time, you need c-type charging line.
 (you need developer account on real iphone)
+
 
 When you launch the app, Phantom will open automatically. Please connect your wallet.
 
@@ -66,11 +69,15 @@ When you launch the app, Phantom will open automatically. Please connect your wa
 
 (your phantom must be on Testnet Mode, check that network is Solana Devnet.)
 
+
 Next, nearby devices will appear around your location. Tap the person you want to send SOL to.
+
 
 Set the amount of SOL you want to send.
 
+
 Sending...
+
 
 Done!
 
@@ -173,11 +180,13 @@ FinePay/PhantomConnectExample 로 이동
 
 FinePay.xcodeproj 실행
 
+
 인덱싱을 위해 잠시 기다려주세요. 이 과정은 컴퓨터 성능에 따라 차이가 날 수 있습니다.
 
 프로젝트를 실행해주세요. 송금 실험을 위해 (두개의 아이폰) 또는 (시뮬레이터와 아이폰)이 필요합니다. 만약 이 과정이 처음이라면, c 타입 충전선으로 연결할 필요가 있습니다. 
 
 (실제 아이폰으로 동작시키려는 경우, 애플 개발자 계정이 필요할 수 있습니다.)
+
 
 앱을 실행하면 자동으로 팬텀이 실행됩니다. 연결해 주세요.
 
@@ -185,11 +194,15 @@ FinePay.xcodeproj 실행
 
 (팬텀이 Testnet 모드여야 합니다. Solana Devnet 네트워크인지 확인해주세요.)
 
+
 이후 나를 중심으로 해 주변 기기가 표시됩니다. 송금하려는 사람을 눌러주세요.
+
 
 몇 SOL을 보내려는지 설정해주세요.
 
+
 송금합니다.
+
 
 끝!
 
