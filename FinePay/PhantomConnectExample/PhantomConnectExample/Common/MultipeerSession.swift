@@ -66,7 +66,7 @@ class MultipeerSession: NSObject, ObservableObject {
     }
 
     private func peer(for peerID: MCPeerID) -> Peer {
-        return Peer(id: peerID.displayName, displayName: peerID.displayName, wallet: "")
+        return Peer(id: peerID.displayName, displayName: peerID.displayName, wallet: "", peerID: peerID)
     }
 }
 
