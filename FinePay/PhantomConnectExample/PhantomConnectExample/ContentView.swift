@@ -10,96 +10,32 @@ import SwiftUI
 import Solana
 import PhantomConnect
 
-//struct ContentView: View {
-//  @StateObject var viewModel = PhantomConnectViewModel()
-//  @State var walletConnected = false
-//  @State var walletPublicKey: PublicKey?
-//  let paduckWallet = "B9hNZruBjAQSdrYYvktnPgGTPsVbY82MyxCZcHraVsZZ"
-//  @State var phantomEncryptionKey: PublicKey?
-//  @State var session: String?
-//  @State var transactionSignature: String?
-//
-//  var body: some View {
-//    VStack {
-//      if walletConnected {
-//        ConnectedContentView(
-//          walletPublicKey: $walletPublicKey,
-//          transactionSignature: $transactionSignature,
-//          phantomEncryptionKey: $phantomEncryptionKey,
-//          session: $session,
-//          viewModel: viewModel
-//        )
-//      } else {
-//        DisconnectedView(
-//          viewModel: viewModel,
-//          walletPublicKey: $walletPublicKey,
-//          phantomEncryptionKey: $phantomEncryptionKey,
-//          session: $session,
-//          walletConnected: $walletConnected
-//        )
-//      }
-//    }
-//    .buttonStyle(.borderedProminent)
-//    .padding()
-//    .onAppear {
-//      PhantomConnect.configure(
-//        appUrl: "https://example.com",
-//        cluster: "devnet",
-//        redirectUrl: "example://"
-//      )
-//    }
-//  }
-//  func createTransaction(completion: @escaping ((_ serializedTransaction: String) -> Void)) {
-//      Task {
-//        do {
-//          let recentBlockhash = try await NetworkManager.shared.getBlockHash()
-//          
-//          var transaction = Transaction(
-//            feePayer: walletPublicKey!,
-//            instructions: [
-//              SystemProgram.transferInstruction(
-//                from: walletPublicKey!,
-//                to: PublicKey(string: paduckWallet)!,
-//                lamports: 1000000000 // 거래 금액
-//              )
-//            ],
-//            recentBlockhash: recentBlockhash
-//          )
-//          
-//          let serializedTransaction = try transaction.serialize().get()
-//          DispatchQueue.main.async {
-//            completion(Base58.encode(serializedTransaction.bytes))
-//          }
-//        } catch {
-//          print("blockHashError: \(error)")
-//        }
-//      }
-//    }
-//}
-
 struct ContentView: View {
   @StateObject var viewModel = PhantomConnectViewModel()
   @State var walletConnected = false
   @State var walletPublicKey: PublicKey?
-  //이부분 수정
   let paduckWallet = "B9hNZruBjAQSdrYYvktnPgGTPsVbY82MyxCZcHraVsZZ"
   @State var phantomEncryptionKey: PublicKey?
   @State var session: String?
   @State var transactionSignature: String?
+  @State var isButtonClicked = false
   
   var body: some View {
-    content
-      .buttonStyle(.borderedProminent)
-      .padding()
-      .onAppear {
-        PhantomConnect.configure(
-          appUrl: "https://example.com",
-          cluster: "devnet",
-          redirectUrl: "example://"
-        )
-      }
+    NavigationStack {
+      content
+        .buttonStyle(.borderedProminent)
+        .padding()
+        .onAppear {
+          PhantomConnect.configure(
+            appUrl: "https://example.com",
+            cluster: "devnet",
+            redirectUrl: "example://"
+          )
+        }
+    }
   }
   
+  //MARK: 지갑연결
   @ViewBuilder
   var content: some View {
     if walletConnected {
@@ -109,6 +45,7 @@ struct ContentView: View {
     }
   }
   
+  //MARK: 연결해제
   var disconnectedContent: some View {
     Button {
       try? viewModel.connectWallet()
@@ -157,18 +94,25 @@ struct ContentView: View {
           transactionSignature = signature
         }
       }
+      
       Button {
-        try? viewModel.disconnectWallet(
-          dappEncryptionKey: viewModel.linkingKeypair?.publicKey,
-          phantomEncryptionKey: phantomEncryptionKey,
-          session: session,
-          dappSecretKey: viewModel.linkingKeypair?.secretKey
-        )
+        isButtonClicked = true
       } label: {
-        Text("Disconnect from Phantom")
+        Text("nextScreen")
       }
-      .onWalletDisconnect { error in
-        walletConnected.toggle()
+      .navigationDestination(isPresented: $isButtonClicked) {
+        SendSOLView(viewModel: viewModel)
+      }
+      .onAppear {
+        if let publicKeyString = walletPublicKey?.base58EncodedString {
+          UserDefaults.standard.set(publicKeyString, forKey: "walletPublicKey")
+        }
+        if let phantomKeyString = phantomEncryptionKey?.base58EncodedString {
+          UserDefaults.standard.set(phantomKeyString, forKey: "phantomEncryptionKey")
+        }
+        if let session = session {
+          UserDefaults.standard.set(session, forKey: "session")
+        }
       }
     }
   }
