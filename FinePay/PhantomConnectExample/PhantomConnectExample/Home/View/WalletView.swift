@@ -11,7 +11,7 @@ import Solana
 import PhantomConnect
 
 struct BottomWalletView {
-  @StateObject var viewModel = PhantomConnectViewModel()
+    @ObservedObject var viewModel: PhantomConnectViewModel
   @State var walletConnected = false
   @State var walletPublicKey: PublicKey?
   @State var phantomEncryptionKey: PublicKey?
@@ -125,6 +125,6 @@ extension BottomWalletView: View {
   }
 }
 
-#Preview {
-  BottomWalletView()
-}
+//#Preview {
+//  BottomWalletView()
+//}

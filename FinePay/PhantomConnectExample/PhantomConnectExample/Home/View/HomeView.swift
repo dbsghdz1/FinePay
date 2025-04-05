@@ -28,7 +28,7 @@ struct HomeView: View {
                 )
                 .padding()
                 
-                BottomWalletView()
+                BottomWalletView(viewModel: viewModel)
                     .padding(.bottom, 40)
             }
 
@@ -38,6 +38,7 @@ struct HomeView: View {
             presentSendingSOL()
         }
         .ignoresSafeArea()
+        .navigationBarBackButtonHidden(true)
     }
 }
 
