@@ -11,6 +11,7 @@ struct SendingResultView {
   @State var okayButtonClicked = false
   @Environment(\.dismiss) private var dismiss
   let solCoin: String
+  let nickName: String
 }
 
 extension SendingResultView: View {
@@ -28,7 +29,7 @@ extension SendingResultView: View {
                   Text("to")
                       .font(.system(size: 40, weight: .semibold))
                       .foregroundStyle(Color.textBlackColor)
-                  Text("Hong")
+                  Text(nickName)
                       .font(.system(size: 40, weight: .bold))
                       .foregroundStyle(Color.mainColor)
               }
@@ -58,5 +59,5 @@ extension SendingResultView: View {
 }
 
 #Preview(body: {
-  SendingResultView(solCoin: "@3")
+  SendingResultView(solCoin: "@3", nickName: "")
 })

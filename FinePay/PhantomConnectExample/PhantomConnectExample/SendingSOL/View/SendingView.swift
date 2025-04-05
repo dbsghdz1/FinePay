@@ -21,7 +21,7 @@ struct SendingView {
   let giverAddress: String
   let myAddress: String
   var session = UserDefaults.standard.string(forKey: "session")
-    let nickName: String
+  let nickName: String
   
   var formattedSOLCoin: String {
     if solCoin.truncatingRemainder(dividingBy: 1) == 0 {
@@ -127,7 +127,7 @@ extension SendingView: View {
     .navigationBarBackButtonHidden(true)
     .background(
       NavigationLink(
-        destination: SendingResultView(solCoin: formattedSOLCoin),
+        destination: SendingResultView(solCoin: formattedSOLCoin, nickName: nickName),
         isActive: $navigateToNextView,
         label: { EmptyView() }
       )
