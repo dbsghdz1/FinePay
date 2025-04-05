@@ -43,7 +43,7 @@ An iOS app built with Swift that allows seamless exchange of wallet addresses an
 
 - Xcode 15+
 - iOS 17.0+
-- Phantom Wallet (Devnet)
+- Phantom Wallet (Devnet IMPORTANT!)
 - iPhone for peer testing
 - apple developer account (if you want to try on real iphone)
 
@@ -62,6 +62,7 @@ Run the project. you might need (two iphone) or (simulate and iphone). if this i
 
 When you launch the app, Phantom will open automatically. Please connect your wallet.
 (On first launch, the app may take longer than expected to start. Please wait patiently.)
+(your phantom must be on Testnet Mode, check that network is Solana Devnet.)
 
 Next, nearby devices will appear around your location. Tap the person you want to send SOL to.
 
@@ -156,7 +157,7 @@ iPhone 간의 근거리 연결을 통해 Phantom 지갑 주소를 자동 공유�
 
 - Xcode 15 이상
 - iOS 17.0 이상
-- Phantom 지갑 (Devnet 설정)
+- Phantom 지갑 (Devnet 설정 중요합니다!)
 - 실기기 1대 (P2P 테스트용)
 - 
 
@@ -177,6 +178,7 @@ FinePay.xcodeproj 실행
 
 앱을 실행하면 자동으로 팬텀이 실행됩니다. 연결해 주세요.
 (첫 실행시 앱 실행에 시간이 생각보다 오래 걸립니다. 기다려주세요.)
+(팬텀이 Testnet 모드여야 합니다. Solana Devnet 네트워크인지 확인해주세요
 
 이후 나를 중심으로 해 주변 기기가 표시됩니다. 송금하려는 사람을 눌러주세요.
 
