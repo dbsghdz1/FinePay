@@ -61,6 +61,7 @@ Run the project. you might need (two iphone) or (simulate and iphone). if this i
 (you need developer account on real iphone)
 
 When you launch the app, Phantom will open automatically. Please connect your wallet.
+(On first launch, the app may take longer than expected to start. Please wait patiently.)
 
 Next, nearby devices will appear around your location. Tap the person you want to send SOL to.
 
@@ -175,6 +176,7 @@ FinePay.xcodeproj 실행
 (실제 아이폰으로 동작시키려는 경우, 애플 개발자 계정이 필요할 수 있습니다.)
 
 앱을 실행하면 자동으로 팬텀이 실행됩니다. 연결해 주세요.
+(첫 실행시 앱 실행에 시간이 생각보다 오래 걸립니다. 기다려주세요.)
 
 이후 나를 중심으로 해 주변 기기가 표시됩니다. 송금하려는 사람을 눌러주세요.
 
