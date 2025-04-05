@@ -62,6 +62,7 @@ Run the project. you might need (two iphone) or (simulate and iphone). if this i
 
 When you launch the app, Phantom will open automatically. Please connect your wallet.
 (On first launch, the app may take longer than expected to start. Please wait patiently.)
+
 (your phantom must be on Testnet Mode, check that network is Solana Devnet.)
 
 Next, nearby devices will appear around your location. Tap the person you want to send SOL to.
@@ -178,7 +179,8 @@ FinePay.xcodeproj 실행
 
 앱을 실행하면 자동으로 팬텀이 실행됩니다. 연결해 주세요.
 (첫 실행시 앱 실행에 시간이 생각보다 오래 걸립니다. 기다려주세요.)
-(팬텀이 Testnet 모드여야 합니다. Solana Devnet 네트워크인지 확인해주세요
+
+(팬텀이 Testnet 모드여야 합니다. Solana Devnet 네트워크인지 확인해주세요.)
 
 이후 나를 중심으로 해 주변 기기가 표시됩니다. 송금하려는 사람을 눌러주세요.
 
