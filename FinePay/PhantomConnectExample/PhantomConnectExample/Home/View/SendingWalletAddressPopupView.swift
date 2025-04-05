@@ -11,34 +11,13 @@ import SwiftUI
 struct SendingWalletAddressPopupView: View {
     let peer: Peer
     let onSend: () -> Void
+    let reject: () -> Void
 
     var body: some View {
         VStack(spacing: 20) {
-            InviteTextView(id: peer.id)
+            SendingWalletTextView(id: peer.id)
 
-            Button(action: {
-                onSend()
-            }) {
-                Text("Send SOL")
-                    .font(.system(size: 26, weight: .semibold))
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(
-                        LinearGradient(
-                            gradient: Gradient(
-                                colors: [
-                                    Color(hex: "6F00EC"),
-                                    Color(hex: "AC63FF")
-                                ]
-                            ),
-                            startPoint: .bottom,
-                            endPoint: .top
-                        )
-                    )
-                    .cornerRadius(12)
-            }
-            .frame(width: 188, height: 55)
+            SendingWalletButtonView(onSend: onSend, reject: reject)
         }
         .padding()
         .frame(maxWidth: .infinity,alignment: .center)
@@ -49,7 +28,7 @@ struct SendingWalletAddressPopupView: View {
 }
 
 
-struct InviteTextView: View {
+struct SendingWalletTextView: View {
     let id: String
     
     var body: some View {
@@ -60,9 +39,43 @@ struct InviteTextView: View {
         Text(" want your wallet address")
             .font(.system(size: 26, weight: .semibold))
     }
-    
+}
+
+struct SendingWalletButtonView: View {
+    let onSend: () -> Void
+    let reject: () -> Void
+
+    var body: some View {
+        HStack {
+            Button(action: {
+                onSend()
+            }) {
+                Text("Reject")
+                    .font(.system(size: 26, weight: .semibold))
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.buttonGrayColor)
+                    .cornerRadius(10)
+            }
+            .frame(width: 173, height: 55)
+            
+            Button(action: {
+                onSend()
+            }) {
+                Text("Share")
+                    .font(.system(size: 26, weight: .semibold))
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.mainColor)
+                    .cornerRadius(10)
+            }
+            .frame(width: 173, height: 55)
+        }
+    }
 }
 
 #Preview {
-    SendingWalletAddressPopupView(peer: Peer(id: "hello", wallet: ""), onSend: {} )
+    SendingWalletAddressPopupView(peer: Peer(id: "hello", wallet: ""), onSend: {}, reject: {} )
 }
