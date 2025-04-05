@@ -1,6 +1,6 @@
 #Korean below
 
-# 📡 FinePay  
+# FinePay  
 Peer-to-Peer Wallet Address Sharing & Solana Transfer
 
 An iOS app built with Swift that allows seamless exchange of wallet addresses and instant Solana transfers between iPhones using MultipeerConnectivity.
