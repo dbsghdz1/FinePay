@@ -30,6 +30,15 @@ struct HomeView: View {
                 
                 BottomWalletView(viewModel: viewModel)
                     .padding(.bottom, 40)
+                    .onAppear {
+                      PhantomConnect.configure(
+                        appUrl: "https://example.com",
+                        cluster: "devnet",
+                        redirectUrl: "example://"
+                      )
+                        try? viewModel.connectWallet()
+                    }
+
             }
 
             dimmedBackground()
@@ -39,14 +48,14 @@ struct HomeView: View {
         }
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)
-        .onAppear {
-          PhantomConnect.configure(
-            appUrl: "https://example.com",
-            cluster: "devnet",
-            redirectUrl: "example://"
-          )
-            try? viewModel.connectWallet()
-        }
+//        .onAppear {
+//          PhantomConnect.configure(
+//            appUrl: "https://example.com",
+//            cluster: "devnet",
+//            redirectUrl: "example://"
+//          )
+//            try? viewModel.connectWallet()
+//        }
     }
 }
 

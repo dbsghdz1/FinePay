@@ -18,6 +18,7 @@ struct PeerView: View {
     
     var body: some View {
         GeometryReader { geometry in
+            renderPeerView(in: geometry)
         }
     }
     
