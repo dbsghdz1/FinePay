@@ -30,6 +30,15 @@ struct HomeView: View {
                 
                 BottomWalletView(viewModel: viewModel, sessionID: String(multipeerSession.myPeerId.id.suffix(4)))
                     .padding(.bottom, 40)
+                    .onAppear {
+                      PhantomConnect.configure(
+                        appUrl: "https://example.com",
+                        cluster: "devnet",
+                        redirectUrl: "example://"
+                      )
+                        try? viewModel.connectWallet()
+                    }
+
             }
 
             dimmedBackground()
@@ -39,6 +48,14 @@ struct HomeView: View {
         }
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)
+//        .onAppear {
+//          PhantomConnect.configure(
+//            appUrl: "https://example.com",
+//            cluster: "devnet",
+//            redirectUrl: "example://"
+//          )
+//            try? viewModel.connectWallet()
+//        }
     }
 }
 
