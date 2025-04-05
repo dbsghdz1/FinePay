@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct SendingResultView {
-  @State private var okayButtonClicked = false
+  @State var okayButtonClicked = false
+  @Environment(\.dismiss) private var dismiss
+  let solCoin: String
 }
 
 extension SendingResultView: View {
@@ -19,14 +21,14 @@ extension SendingResultView: View {
         .resizable()
         .frame(width: 96, height: 96)
         .foregroundStyle(Color.mainColor)
-      Text("Sent 0.1")
+      Text("Sent \(solCoin)")
         .font(.system(size: 40, weight: .semibold))
       HStack {
         Text("to")
           .font(.system(size: 40, weight: .semibold))
           .foregroundStyle(Color.textBlackColor)
         Text("Hong")
-          .font(.system(size: 40, weight: .semibold))
+          .font(.system(size: 40, weight: .bold))
           .foregroundStyle(Color.mainColor)
       }
       //TODO: 메모?
@@ -46,13 +48,11 @@ extension SendingResultView: View {
       }
       .padding(.horizontal)
       .padding(.bottom, 38)
-//      .navigationDestination(isPresented: $confirmButtonClicked) {
-//        SendingView()
-//      }
     }
+    .navigationBarBackButtonHidden(true)
   }
 }
 
 #Preview(body: {
-  SendingResultView()
+  SendingResultView(solCoin: "@3")
 })

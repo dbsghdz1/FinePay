@@ -11,6 +11,8 @@ import Solana
 import PhantomConnect
 
 struct SendingView {
+  @State private var navigateToNextView = false
+  @Environment(\.dismiss) private var dismiss
   @State var confirmButtonClicked = false
   let solCoin: Double
   @StateObject var viewModel: PhantomConnectViewModel
@@ -30,6 +32,32 @@ struct SendingView {
 
 extension SendingView: View {
   var body: some View {
+    ZStack(alignment: .top) {
+      Color.sendingSolNavHeader
+        .frame(height: 52)
+        .clipShape(TopRoundedRectangle(cornerRadius: 30))
+      VStack(spacing: 0) {
+        HStack {
+          Button {
+            dismiss()
+          } label: {
+            Image(systemName: "chevron.left")
+              .font(.system(size: 20, weight: .semibold))
+              .foregroundStyle(Color.textBlackColor)
+          }
+          Spacer()
+          Text("Sending SOL")
+            .font(.system(size: 17))
+            .fontWeight(.semibold)
+            .foregroundStyle(Color.textBlackColor)
+          Spacer()
+        }
+        .padding(.horizontal)
+        .padding(.top)
+        .padding(.bottom, 12)
+      }
+    }
+
     VStack {
       Spacer()
       Text("Sending")
@@ -43,7 +71,7 @@ extension SendingView: View {
           .font(.system(size: 40, weight: .semibold))
           .foregroundStyle(Color.textBlackColor)
         Text("Hong")
-          .font(.system(size: 40, weight: .semibold))
+          .font(.system(size: 40, weight: .bold))
           .foregroundStyle(Color.mainColor)
       }
       Spacer()
@@ -82,6 +110,7 @@ extension SendingView: View {
         if let error = error {
           print("failTransaction : \(error.localizedDescription)")
         } else if let signature = signature {
+          navigateToNextView = true
           print("successTransaction: \(signature)")
         }
       }
@@ -93,6 +122,14 @@ extension SendingView: View {
         redirectUrl: "example://"
       )
     }
+    .navigationBarBackButtonHidden(true)
+    .background(
+      NavigationLink(
+        destination: SendingResultView(solCoin: formattedSOLCoin),
+        isActive: $navigateToNextView,
+        label: { EmptyView() }
+      )
+    )
   }
   
   func createTransaction(completion: @escaping ((_ serializedTransaction: String) -> Void)) {
@@ -108,7 +145,7 @@ extension SendingView: View {
             SystemProgram.transferInstruction(
               from: PublicKey(string: "8zvV1Gig5i1pHbyXbqEQBHTe2Ft8qvzR9CPziZQ5p3ET")!,
               to: PublicKey(string: paduckWallet)!,
-              lamports: 1000000000
+              lamports: UInt64(1000000000.0 * solCoin)
             )
           ],
           recentBlockhash: recentBlockhash

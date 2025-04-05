@@ -14,11 +14,37 @@ struct SendSOLView {
   @State private var inputText: String = "0"
   @State private var sendButtonClicked = false
   let viewModel: PhantomConnectViewModel?
+  @Environment(\.dismiss) private var dismiss
 }
 
 extension SendSOLView: View {
   var body: some View {
     NavigationStack {
+      ZStack(alignment: .top) {
+        Color.sendingSolNavHeader
+          .frame(height: 52)
+          .clipShape(TopRoundedRectangle(cornerRadius: 30))
+        VStack(spacing: 0) {
+          HStack {
+            Button {
+              dismiss()
+            } label: {
+              Image(systemName: "chevron.left")
+                .font(.system(size: 20, weight: .semibold))
+                .foregroundStyle(Color.textBlackColor)
+            }
+            Spacer()
+            Text("Sending SOL")
+              .font(.system(size: 17))
+              .fontWeight(.semibold)
+              .foregroundStyle(Color.textBlackColor)
+            Spacer()
+          }
+          .padding(.horizontal)
+          .padding(.top)
+          .padding(.bottom, 12)
+        }
+      }
       VStack {
         Spacer()
         GeometryReader { geometry in
@@ -29,7 +55,6 @@ extension SendSOLView: View {
               .multilineTextAlignment(.trailing)
               .font(.system(size: 56))
               .padding(.trailing, 8)
-//              .minimumScaleFactor(0.5)
               .lineLimit(1)
               .foregroundStyle(inputText == "0" ? Color.textGrayColor : Color.textBlackColor)
               .keyboardType(.decimalPad)
@@ -38,8 +63,6 @@ extension SendSOLView: View {
               .fixedSize(horizontal: true, vertical: true)
               .onChange(of: solPrice) { newValue in
                 inputText = String(format: "%.6f", newValue).removeZeros()
-//                inputText = String(format: "%.2f", newValue)
-//                solPrice = newValue
               }
               .onChange(of: inputText) { newValue in
                 if let value = Double(newValue), value >= 0 {
@@ -107,6 +130,7 @@ extension SendSOLView: View {
       .onTapGesture {
         self.endTextEditing()
       }
+      .navigationBarBackButtonHidden(true)
     }
   }
   
