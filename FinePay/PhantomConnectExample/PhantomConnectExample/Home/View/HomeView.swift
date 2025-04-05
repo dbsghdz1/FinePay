@@ -10,10 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @StateObject var multipeerSession = MultipeerSession()
     @State private var selectedPeer: Peer? = nil
-    @State private var sendingFromPeer: Peer? = nil
-    @State private var isConnectingToPeer: Bool = false
-    @State private var isSheetPresented = false
-
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             VStack {
@@ -22,7 +19,6 @@ struct HomeView: View {
                     inviteAction: { peer in
                         withAnimation {
                             selectedPeer = peer
-                            sendingFromPeer = nil
                         }
                     }
                 )
@@ -43,14 +39,14 @@ struct HomeView: View {
 extension HomeView {
     @ViewBuilder
     private func dimmedBackground() -> some View {
-        if selectedPeer != nil || sendingFromPeer != nil {
+        if selectedPeer != nil || multipeerSession.sendingFromPeer != nil {
             Color.black.opacity(0.4)
                 .ignoresSafeArea()
                 .transition(.opacity)
                 .onTapGesture {
                     withAnimation {
                         selectedPeer = nil
-                        sendingFromPeer = nil
+                        multipeerSession.sendingFromPeer = nil
                     }
                 }
         }
@@ -72,30 +68,24 @@ extension HomeView {
 
     @ViewBuilder
     private func sendingWalletPopup() -> some View {
-        if let peer = sendingFromPeer {
+        if let peer = multipeerSession.sendingFromPeer {
             SendingWalletAddressPopupView(
                 peer: peer,
                 onSend: {
-                    print("Send wallet address to \(peer.id)")
+                    print("✅ Send wallet address to \(peer.id)")
                     withAnimation {
-                        sendingFromPeer = nil
+                        multipeerSession.sendingFromPeer = nil
                     }
                 },
                 reject: {
-                    print("Rejected \(peer.id)'s request")
+                    print("❌ Rejected \(peer.id)'s request")
                     withAnimation {
-                        sendingFromPeer = nil
+                        multipeerSession.sendingFromPeer = nil
                     }
                 }
             )
             .transition(.move(edge: .bottom))
-            .animation(.easeInOut, value: sendingFromPeer)
+            .animation(.easeInOut, value: multipeerSession.sendingFromPeer)
         }
     }
 }
-
-
-#Preview {
-    HomeView()
-}
-

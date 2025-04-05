@@ -13,7 +13,7 @@ struct InvitePopupView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            SentTextView(id: peer.id)
+            SentTextView(displayName: peer.displayName)
 
             Button(action: {
                 onSend()
@@ -49,7 +49,7 @@ struct InvitePopupView: View {
 
 
 struct SentTextView: View {
-    let id: String
+    let displayName: String
     
     var body: some View {
         VStack {
@@ -60,7 +60,7 @@ struct SentTextView: View {
                 Text("Solana to ")
                     .font(.system(size: 26, weight: .semibold))
                 +
-                Text(id) // or peer.displayName
+                Text(displayName)
                     .font(.system(size: 26, weight: .bold))
             )
         }
@@ -70,5 +70,5 @@ struct SentTextView: View {
 }
 
 #Preview {
-    InvitePopupView(peer: Peer(id: "hello", wallet: ""), onSend: {} )
+    InvitePopupView(peer: Peer(id: "hello", displayName: "iPhone16", wallet: ""), onSend: {} )
 }

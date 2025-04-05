@@ -15,7 +15,7 @@ struct SendingWalletAddressPopupView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            SendingWalletTextView(id: peer.id)
+            SendingWalletTextView(displayName: peer.displayName)
 
             SendingWalletButtonView(onSend: onSend, reject: reject)
         }
@@ -29,10 +29,10 @@ struct SendingWalletAddressPopupView: View {
 
 
 struct SendingWalletTextView: View {
-    let id: String
+    let displayName: String
     
     var body: some View {
-        Text(id)
+        Text(displayName)
             .font(.system(size: 26, weight: .bold))
             .foregroundStyle(Color.mainColor)
         +
@@ -77,5 +77,5 @@ struct SendingWalletButtonView: View {
 }
 
 #Preview {
-    SendingWalletAddressPopupView(peer: Peer(id: "hello", wallet: ""), onSend: {}, reject: {} )
+    SendingWalletAddressPopupView(peer: Peer(id: "hello", displayName: "iPhone16", wallet: ""), onSend: {}, reject: {} )
 }
