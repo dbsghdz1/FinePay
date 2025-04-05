@@ -118,7 +118,14 @@ extension HomeView {
     @ViewBuilder
     private func presentSendingSOL() -> some View {
         if let address = multipeerSession.giverAddress {
-            SendSOLView(viewModel: viewModel, giverAddress: address, nickName: String(multipeerSession.connectPeer?.id.suffix(4) ?? ""))
+            SendSOLView(
+                viewModel: viewModel,
+                giverAddress: address,
+                myAddress: UserDefaults.standard.string(forKey: "walletPublicKey") ?? "",
+                nickName: String(
+                    multipeerSession.connectPeer?.id.suffix(4) ?? ""
+                )
+            )
         }
     }
 }

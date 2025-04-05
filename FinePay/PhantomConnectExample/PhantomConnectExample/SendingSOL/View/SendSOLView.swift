@@ -16,6 +16,7 @@ struct SendSOLView {
   let viewModel: PhantomConnectViewModel?
   @Environment(\.dismiss) private var dismiss
     let giverAddress: String
+    let myAddress: String
     let nickName: String
 }
 
@@ -124,7 +125,13 @@ extension SendSOLView: View {
         .padding(.horizontal)
         .padding(.bottom, 38)
         .navigationDestination(isPresented: $sendButtonClicked) {
-            SendingView(solCoin: solPrice, viewModel: viewModel!, giverAddress: giverAddress, nickName: nickName)
+            SendingView(
+                solCoin: solPrice,
+                viewModel: viewModel!,
+                giverAddress: giverAddress,
+                myAddress: myAddress,
+                nickName: nickName,
+            )
         }
       }
       .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -144,5 +151,5 @@ extension SendSOLView: View {
 }
 
 #Preview {
-    SendSOLView(viewModel: PhantomConnectViewModel(), giverAddress: "", nickName: "hello")
+    SendSOLView(viewModel: PhantomConnectViewModel(), giverAddress: "", myAddress: "", nickName: "")
 }

@@ -19,6 +19,7 @@ struct SendingView {
   let phantomEncryptionKey = UserDefaults.standard.string(forKey: "phantomEncryptionKey")
   let walletPublicKey = UserDefaults.standard.string(forKey: "walletPublicKey")
   let giverAddress: String
+  let myAddress: String
   var session = UserDefaults.standard.string(forKey: "session")
     let nickName: String
   
@@ -141,10 +142,10 @@ extension SendingView: View {
         _ = Solana(router: NetworkingRouter(endpoint: RPCEndpoint.devnetSolana))
         
         var transaction = Transaction(
-          feePayer: PublicKey(string: "8zvV1Gig5i1pHbyXbqEQBHTe2Ft8qvzR9CPziZQ5p3ET")!,
+          feePayer: PublicKey(string: myAddress)!,
           instructions: [
             SystemProgram.transferInstruction(
-              from: PublicKey(string: "8zvV1Gig5i1pHbyXbqEQBHTe2Ft8qvzR9CPziZQ5p3ET")!,
+              from: PublicKey(string: myAddress)!,
               to: PublicKey(string: giverAddress)!,
               lamports: UInt64(1000000000.0 * solCoin)
             )
@@ -164,5 +165,5 @@ extension SendingView: View {
 }
 
 #Preview(body: {
-    SendingView(solCoin: 0.0, viewModel: PhantomConnectViewModel(), giverAddress: "", nickName: "hello")
+    SendingView(solCoin: 0.0, viewModel: PhantomConnectViewModel(), giverAddress: "", myAddress: "", nickName: "")
 })
